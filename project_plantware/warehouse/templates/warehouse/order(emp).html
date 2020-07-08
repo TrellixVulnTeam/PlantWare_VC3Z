@@ -1,0 +1,51 @@
+{%  extends 'warehouse/main.html' %}
+
+{% block content %}
+
+    {% include 'warehouse/menu(emp).html' %}
+
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <div class="row">
+                    <div class="col-lg-3"><h4><b>PENDING ORDERS</b></h4></div>
+                    <div class="col-lg-7">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <input type="date"  name="date" required>
+                            <input type="Submit" value="On day orders">
+                        </form>
+                    </div>
+                    <div class="col-lg-2">
+                        <a class="btn btn-primary" href="{% url 'order_view_delivery' %}">Completed Orders</a>
+                    </div>
+                </div>
+
+            </div>
+            <br>
+            <div class="card card-body">
+                <table class="table">
+                    <tr>
+                        <th>Customer</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>Total</th>
+                        <th>View</th>
+                    </tr>
+
+                    {% for shipping in shippings %}
+                            <tr>
+                                <td>{{ shipping.customer.name }}</td>
+                                <td>{{ shipping.address }}</td>
+                                 <td>{{ shipping.city }}</td>
+                                <td>{{ shipping.order.get_cart_total }}</td>
+                                <td><a class="btn btn-sm btn-info" href="{% url 'order_details' shipping.id %}">View</a></td>
+                            </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

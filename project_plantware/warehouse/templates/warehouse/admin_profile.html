@@ -1,0 +1,19 @@
+{%  extends 'warehouse/main.html' %}
+
+{% block content %}
+
+    <div class="row mid" style="padding: 100px;">
+        <div class="col-md-12">
+            <div class="card card-body">
+                <div class="box-element">
+                    <a  class="btn btn-outline-dark" href="{% url 'home' %}">&#x2190; Back</a>
+                    <h3 style="text-align: center">Account</h3> <hr>
+                        Name: {{ request.user }}<br> <br>
+                        Email : {{ request.user.email }} <br> <br>
+                        <a  class="btn btn-outline-secondary" href="{% url 'change_password' %}">Change Password</a>
+                </div>
+            </div>
+	    </div>
+    </div>
+
+{% endblock %}

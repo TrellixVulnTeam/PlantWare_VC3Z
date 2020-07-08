@@ -1,0 +1,39 @@
+{%  extends 'warehouse/main.html' %}
+
+{% block content %}
+    {% include 'warehouse/menu(emp).html' %}
+
+
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <h2>Customers</h2>
+            </div>
+            <br>
+            <div class="card card-body">
+                <table class="table">
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>email</th>
+                        <th>Phone</th>
+                        <th>Details</th>
+                    </tr>
+
+                    {% for customer in customers %}
+                    <tr>
+                        <td><img class="row-image" src="{{customer.profile_pic.url}}"></td>
+                        <td>{{ customer.name }}</td>
+                        <td>{{ customer.email }}</td>
+                        <td>{{ customer.phone }}</td>
+                        <td><a class="btn btn-sm btn-info" href="{% url 'cus_details' customer.id %}">Details</a></td>
+                    </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}

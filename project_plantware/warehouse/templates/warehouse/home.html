@@ -1,0 +1,49 @@
+{% extends 'warehouse/main.html' %}
+
+{% block content %}
+
+    {% include 'warehouse/menu(emp).html' %}
+
+    <div class="row">
+        <div class="col">
+            <div class="col-md">
+                <div class="card text-center text-white  mb-3" id="total-plants">
+                    <div class="card-header">
+                            <h5 class="card-title">TYPE OF PLANTS</h5>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title"> {{ total_products }} </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="col-md">
+                <div class="card text-center text-white  mb-3" id="production-plan">
+                    <div class="card-header">
+                        <h5 class="card-title">PRODUCTION PLANS</h5>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">{{ plans }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="col-md">
+                <div class="card text-center text-white  mb-3" id="orders-pending">
+                    <div class="card-header">
+                        <h5 class="card-title">ORDERS PENDING</h5>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title"> {{ orders }} </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

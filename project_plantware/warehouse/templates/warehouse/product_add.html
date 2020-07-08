@@ -1,0 +1,30 @@
+{%  extends 'warehouse/main.html' %}
+{% load static %}
+{% block content %}
+<br>
+
+<div class="row mid">
+    <div class="box-element">
+        <h3><strong>Add New Product</strong></h3>
+        <a  class="btn btn-outline-dark" href="{% url 'product_list' %}">&#x2190; Back</a>
+        <hr>
+
+         <form action="" method="POST" enctype="multipart/form-data">
+             {% csrf_token %}
+             {{ form.as_p }}
+
+             <br>
+             <br>
+         <input type="submit" value="Submit">
+        </form>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

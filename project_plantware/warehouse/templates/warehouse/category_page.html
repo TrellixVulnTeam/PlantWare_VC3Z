@@ -1,0 +1,45 @@
+{%  extends 'warehouse/main.html' %}
+
+{% block content %}
+
+<div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <div class="row">
+                    <a class="btn btn-outline-dark" href="{% url 'product_list' %}">&#x2190; Back </a>
+                    <div class="col-lg-5"><h4><b>Category List</b></h4></div>
+                    <div class="col-lg-2"><h4><b>New Category:</b></h4></div>
+                    <div class="col-lg-4">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <input type="text"  name="category" required>
+                            <input type="Submit" value="Submit">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+            <br>
+<div class="row mid">
+        <div class="col-md mid">
+            <div class="card card-body mid">
+                <table class="table">
+                    <tr>
+                        <th>Category</th>
+                        <th>Remove</th>
+                    </tr>
+
+                    {% for category in categories%}
+                    <tr>
+                        <td>{{ category.name }}</td>
+                        <td><a class="btn btn-sm btn-danger" href="{% url 'delete_category' category.id %}">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+</div>
+
+{% endblock %}

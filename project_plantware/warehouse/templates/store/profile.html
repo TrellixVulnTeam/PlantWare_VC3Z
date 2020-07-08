@@ -1,0 +1,64 @@
+{%  extends 'warehouse/main.html' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card card-body">
+                <a class="btn btn-warning" href="{% url 'profile_update' %}">Update Profile</a>
+                <a class="btn btn-secondary" href="{% url 'change_password' %}">Change Password</a>
+                <hr>
+                <img class="profile-pic" src="{{ request.user.customer.profile_pic.url }}">
+
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div class="card card-body">
+                <div class="box-element">
+                    <h3 style="text-align: center">Account</h3> <hr>
+                    Username : {{ request.user.customer.name }} <br><br>
+                    Email : {{ request.user.customer.email }} <br> <br>
+                    Phone : {{ request.user.customer.phone }}
+
+                </div>
+            </div>
+	    </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <div>
+                    <h2>Orders</h2>
+                </div>
+            </div>
+
+            <div class="card card-body">
+                <table class="table">
+                    <tr>
+                        <th>Date of order</th>
+                        <th>Delivered</th>
+                        <th>Total item</th>
+                        <th>Total</th>
+                        <th>View</th>
+                    </tr>
+
+                    {% for order in orders %}
+                        {% if order.complete == True %}
+                            <tr>
+                                <td>{{ order.date_ordered|date }}</td>
+                                <td> {% if order.delivery == True %} Yes {% else %} NO {% endif %} </td>
+                                 <td>{{ order.get_cart_items }}</td>
+                                <td>{{ order.get_cart_total }}</td>
+                                <td><a class="btn btn-sm btn-info" href="{% url 'cus_order' order.id %}">View</a></td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

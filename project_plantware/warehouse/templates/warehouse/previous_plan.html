@@ -1,0 +1,42 @@
+{%  extends 'warehouse/main.html' %}
+{% load static %}
+{% block content %}
+<br>
+{% include 'warehouse/menu(emp).html' %}
+
+    <div class="row">
+        <div class="col-md">
+            <div class="card card-body">
+                <div>
+                    <h2>Previous Productions List</h2>
+                </div>
+            </div>
+            <br>
+            <div class="card card-body">
+                <table class="table">
+                    <tr>
+                        <th>Date</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Prepared</th>
+                        <th>Delete</th>
+                    </tr>
+
+                    {% for plan in productions %}
+                            <tr>
+                                <td>{{ plan.date_added }}</td>
+                                <td>{{ plan.product }}</td>
+                                <td>{{ plan.quantity }}</td>
+                                <td>{% if plan.prepared == True %} Yes {% else %} NO {% endif %}</td>
+                                <td><a class="btn btn-sm btn-danger" href="{% url 'production_delete' plan.id %}">Delete</a></td>
+                            </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

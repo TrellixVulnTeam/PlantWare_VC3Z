@@ -1,0 +1,34 @@
+{%  extends 'warehouse/main.html' %}
+{% load static %}
+{% block content %}
+<br>
+
+<div class="row mid">
+    <div class="col-lg-4 box-element">
+        <h3><strong>New Production</strong></h3>
+        <a  class="btn btn-outline-dark" href="{% url 'home' %}">&#x2190; Back</a>
+        <hr>
+
+         <form action="" method="POST" enctype="multipart/form-data">
+             {% csrf_token %}
+             {{ form.as_p }}
+
+             <br>
+             <br>
+         <input type="submit" value="Submit">
+        </form>
+
+    </div>
+    <div class="col-lg-4 box-element">
+        <div>
+            {% for message in messages %}
+                {% if "order" in message.tags %}
+                    <p> {{message}} </p>
+                {%endif%}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
